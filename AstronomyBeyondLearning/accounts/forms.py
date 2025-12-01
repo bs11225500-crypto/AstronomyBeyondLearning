@@ -16,7 +16,6 @@ class SignUpForm(forms.Form):
     website = forms.URLField(required=False)
     profile_picture = forms.ImageField(required=False)
 
-    # clean method 
     def clean(self):
         cleaned_data = super().clean()
 

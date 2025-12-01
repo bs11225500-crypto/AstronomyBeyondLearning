@@ -118,6 +118,10 @@ def user_profile_view(request:HttpRequest, user_name):
 
     })
 
+def log_out(request: HttpRequest):
+    logout(request)  # do logout
+    messages.success(request, "Logged out successfully", "alert-warning")
+    return redirect(request.GET.get("next", "/"))  # redirect to home
 
 def update_user_profile(request: HttpRequest):
 
