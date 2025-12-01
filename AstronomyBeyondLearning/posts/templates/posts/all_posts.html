@@ -1,0 +1,35 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}ABL | Cosmic Feed{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/all_posts_styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="posts-feed-container">
+    
+    <div class="feed-header mb-5">
+        <h1 class="display-4 fw-bold mb-2 section-title">Cosmic Chronicles</h1>
+        <p class="lead text-muted">Explore the latest celestial discoveries shared by our community.</p>
+        
+        <a href="{% url 'posts:create_post' %}" class="btn btn-publish create-new-btn mt-4">
+            <i class="fas fa-plus-circle"></i> Create New Post
+        </a>
+    </div>
+    
+    <div class="row post-grid">
+        {% for post in posts %}
+            {% include 'posts/_post_card.html' with post=post %} 
+        {% empty %}
+            <div class="col-12">
+                <p class="text-center p-5 text-muted no-posts-message">
+                    The cosmic dust settled. No posts found yet!
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
