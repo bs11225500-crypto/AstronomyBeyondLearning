@@ -14,21 +14,185 @@
     <div class="hero-content">
         
         <div class="abl-container">
-            <div class="abl-letters">
-                <span>A</span>
-                <span>B</span>
-                <span>L</span>
-            </div>
-
-            <div class="abl-words">
-                <span>Astronomy</span>
-                <span>Beyond</span>
-                <span>Learning</span>
-            </div>
+        <div class="abl-letters" data-aos="fade-up" data-aos-delay="200">
+            <span>A</span>
+            <span>B</span>
+            <span>L</span>
         </div>
+
+        <div class="abl-words" data-aos="fade-up" data-aos-delay="400">
+            <span>Astronomy</span>
+            <span>Beyond</span>
+            <span>Learning</span>
+        </div>
+    </div>
+
 
     </div>
 
 </section>
+<section class="planet-explorer">
+  <div class="planet-card">
+    <video class="card-bg-video" autoplay muted loop playsinline>
+        <source src="{% static 'videos/space.mp4' %}" type="video/mp4">
+    </video>
+
+    <aside class="planet-menu">
+      <button class="planet-btn active" data-planet="intro">
+        <span class="planet-dot intro-dot"></span>
+        <span class="planet-name">Explore</span>
+      </button>
+
+      <button class="planet-btn" data-planet="sun">
+        <span class="planet-dot sun-dot"></span>
+        <span class="planet-name">Sun</span>
+      </button>
+
+      <button class="planet-btn" data-planet="earth">
+        <span class="planet-dot earth-dot"></span>
+        <span class="planet-name">Earth</span>
+      </button>
+
+      <button class="planet-btn" data-planet="moon">
+        <span class="planet-dot moon-dot"></span>
+        <span class="planet-name">Moon</span>
+      </button>
+
+      <button class="planet-btn" data-planet="star">
+        <span class="planet-dot star-dot"></span>
+        <span class="planet-name">Star</span>
+      </button>
+
+
+    </aside>
+    
+
+    <div class="planet-display">
+
+      <div class="planet-panel active" id="intro">
+        <div class="intro-container">
+            <h1 class="intro-title">COSMIC AYAT</h1>
+            <p class="intro-subtitle">Quranic Verses About the Universe</p>
+        </div>
+      </div>
+
+      
+      <div class="planet-panel" id="sun">
+        <div class="planet-image">
+          <img src="{% static 'images/sun.png' %}" alt="Sun">
+        </div>
+        <audio class="planet-audio">
+            <source src="{% static 'audio/sun.mp3' %}" type="audio/mpeg">
+        </audio>
+        <div class="planet-info">
+          <h3>STAR</h3>
+          <h1>SUN</h1>
+          <p class="planet-ayah" data-text="لَا الشَّمْسُ يَنبَغِي لَهَا أَن تُدْرِكَ الْقَمَرَ وَلَا اللَّيْلُ سَابِقُ النَّهَارِ ۚ وَكُلٌّ فِي فَلَكٍ يَسْبَحُونَ"></p>
+
+        </div>
+      </div>
+
+     
+      <div class="planet-panel" id="earth">
+        <div class="planet-image">
+          <img src="{% static 'images/earth.jpg' %}" alt="Earth">
+        </div>
+        <audio class="planet-audio">
+            <source src="{% static 'audio/earth.mp3' %}" type="audio/mpeg">
+        </audio>
+        <div class="planet-info">
+          <h3>PLANET</h3>
+          <h1>EARTH</h1>
+          <p class="planet-ayah" data-text="وَالْأَرْضَ مَدَدْنَاهَا وَأَلْقَيْنَا فِيهَا رَوَاسِيَ وَأَنبَتْنَا فِيهَا مِن كُلِّ شَيْءٍ مَّوْزُونٍ "></p>
+
+        </div>
+      </div>
+
+      
+      <div class="planet-panel" id="moon">
+        <div class="planet-image">
+          <img src="{% static 'images/moon.png' %}" alt="Moon">
+        </div>
+        <audio class="planet-audio">
+            <source src="{% static 'audio/moon.mp3' %}" type="audio/mpeg">
+        </audio>
+        <div class="planet-info">
+          <h3>MOON</h3>
+          <h1>MOON</h1>
+          <p class="planet-ayah" data-text="وَالْقَمَرَ قَدَّرْنَاهُ مَنَازِلَ حَتَّىٰ عَادَ كَالْعُرْجُونِ الْقَدِيمِ"></p>
+
+        </div>
+      </div>
+
+      <div class="planet-panel" id="star">
+        <div class="planet-image">
+            <img src="{% static 'images/star.png' %}" alt="Star">
+        </div>
+
+        <audio class="planet-audio">
+            <source src="{% static 'audio/star.mp3' %}" type="audio/mpeg">
+        </audio>
+
+        <div class="planet-info">
+            <h3>STAR</h3>
+            <h1>TYPE O STAR</h1>
+
+            <p class="planet-ayah" 
+            data-text="وَلَقَدْ جَعَلْنَا فِي السَّمَاءِ بُرُوجًا وَزَيَّنَّاهَا لِلنَّاظِرِينَ"></p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+<script>
+const buttons = document.querySelectorAll(".planet-btn");
+const panels = document.querySelectorAll(".planet-panel");
+
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+       
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+       
+        let target = btn.dataset.planet;
+        panels.forEach(p => {
+            p.classList.remove("active");
+
+           
+            let audio = p.querySelector(".planet-audio");
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        });
+
+        const activePanel = document.getElementById(target);
+        activePanel.classList.add("active");
+
+        let audio = activePanel.querySelector(".planet-audio");
+        if (audio) {
+            audio.play();
+        }
+
+    
+        let ayah = activePanel.querySelector(".planet-ayah");
+        let text = ayah.dataset.text;
+
+        ayah.innerHTML = "";
+        let i = 0;
+        let interval = setInterval(() => {
+            ayah.innerHTML += text[i];
+            i++;
+            if (i >= text.length) clearInterval(interval);
+        }, 60);
+    });
+});
+</script>
+
+
 
 {% endblock content %}
