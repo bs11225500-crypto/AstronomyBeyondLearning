@@ -56,3 +56,54 @@ def planet_detail_view(request, planet_id):
         "planets/planet_detail.html",
         {"planet": planet, "page_obj": page_obj}
     )
+
+
+def planet_delete_view(request, planet_id):
+
+    if not request.user.is_staff:
+        messages.warning(request, "Only staff can delete planets", "alert-warning")
+        return redirect("main:home_view")
+
+    try:
+        planet = Planet.objects.get(id=planet_id)
+        planet.delete()
+        messages.success(request, "Planet deleted successfully", "alert-success")
+    except:
+        messages.error(request, "Couldn't delete planet", "alert-danger")
+
+    return redirect("planets:planets_list")
+
+
+def planet_update_view(request, planet_id):
+
+    if not request.user.is_staff:
+        messages.warning(request, "Only staff can update planets", "alert-warning")
+        return redirect("main:home")
+
+    planet = Planet.objects.get(id=planet_id)
+
+    if request.method == "POST":
+        form = PlanetForm(request.POST, request.FILES, instance=planet)
+
+        if form.is_valid():
+
+            planet.name = request.POST.get("name")
+            planet.description = request.POST.get("description")
+            planet.category = request.POST.get("category")
+
+            if "image" in request.FILES:
+                planet.image = request.FILES["image"]
+
+            planet.save()
+
+            messages.success(request, "Planet updated successfully", "alert-success")
+            return redirect("planets:planet_detail", planet_id=planet_id)
+
+    else:
+        form = PlanetForm(instance=planet)
+
+    return render(request, "planets/planet_update.html", {
+        "planet": planet,
+        "form": form,
+    })
+
