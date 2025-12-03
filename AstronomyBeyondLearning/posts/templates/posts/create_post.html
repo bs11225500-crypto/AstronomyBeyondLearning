@@ -1,27 +1,54 @@
-{% extends 'main/base.html' %}
-{% load static %}  <-- 🚨 هذا هو السطر الناقص الذي يسبب المشكلة
+{% extends "main/base.html" %}
+{% load static %}
 
-{% block extra_css %} 
-    <link rel="stylesheet" href="{% static 'css/create_post.css' %}">
-{% endblock %}
+{% block title %} Create New Post — ABL {% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/create_post.css' %}">
+{% endblock extra_css %}
 
 {% block content %}
-<div class="form-wrapper">
-    <h2 class="form-title">Create New Post</h2>
 
-    <form method="POST" enctype="multipart/form-data" class="add-form">
+<div class="auth-card">
+
+    <svg class="border-anim">
+        <rect class="path-blue"></rect>
+        <rect class="path-purple"></rect>
+    </svg>
+
+    <h2>Add New Post</h2>
+
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title" required minlength="3">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="title" required minlength="3">
+        </div>
 
-        <label for="content">Content</label>
-        <textarea name="content" id="content" rows="4" required></textarea>
+        <div class="form-group">
+            <label>Content</label>
+            <textarea name="content" rows="4" required></textarea>
+        </div>
 
-        <label for="media_file">Image/Video</label>
-        <input type="file" name="media_file" id="media_file" accept="image/*,video/*">
+        <div class="form-group">
+            <label>Image / Video</label>
 
-        <button type="submit" class="submit-btn">Publish Post</button>
+            <div id="mediaDropZone" class="drop-zone">
+                <p>Drag & Drop or <span class="browse-link">Browse</span></p>
+                <input type="file" id="mediaFile" name="media_file" accept="image/*,video/*">
+            </div>
+
+            <div id="mediaPreview" class="preview-box"></div>
+        </div>
+
+        <button type="submit" class="primary-btn">Publish Post</button>
     </form>
+
 </div>
-{% endblock %}
+
+{% endblock content %}
+
+{% block extra_js %}
+<script src="{% static 'js/create_post.js' %}"></script>
+{% endblock extra_js %}

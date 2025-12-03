@@ -1,76 +1,62 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const dropZone = document.getElementById('mediaDropZone');
-    const fileInput = document.getElementById('mediaFile');
-    const previewContainer = document.getElementById('mediaPreview');
-    const browseLink = document.querySelector('.browse-link');
+document.addEventListener("DOMContentLoaded", () => {
 
-    browseLink.addEventListener('click', () => {
-        fileInput.click();
-    });
+    /* ===== Border Animation ===== */
+    const svg = document.querySelector(".border-anim");
+    if (svg) {
+        const rects = svg.querySelectorAll("rect");
+        const width = svg.clientWidth;
+        const height = svg.clientHeight;
+        const perimeter = 2 * (width + height);
 
-    
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        dropZone.addEventListener(eventName, preventDefaults, false);
-    });
-
-    function preventDefaults(e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }
-
-    ['dragenter', 'dragover'].forEach(eventName => {
-        dropZone.addEventListener(eventName, highlight, false);
-    });
-
-    ['dragleave', 'drop'].forEach(eventName => {
-        dropZone.addEventListener(eventName, unhighlight, false);
-    });
-
-    function highlight() {
-        dropZone.classList.add('highlight'); 
-    }
-
-    function unhighlight() {
-        dropZone.classList.remove('highlight');
-    }
-
-    dropZone.addEventListener('drop', handleDrop, false);
-
-    function handleDrop(e) {
-        let dt = e.dataTransfer;
-        let files = dt.files;
-        
-        handleFiles(files);
-    }
-
-    fileInput.addEventListener('change', (e) => {
-        handleFiles(e.target.files);
-    });
-
-
-    function handleFiles(files) {
-
-        previewContainer.innerHTML = ''; 
-
-        [...files].forEach(file => {
-            const fileURL = URL.createObjectURL(file);
-            const mediaElement = document.createElement(file.type.startsWith('image/') ? 'img' : 'video');
-            
-            if (file.type.startsWith('video/')) {
-                mediaElement.controls = true; 
-            }
-            
-            mediaElement.src = fileURL;
-            mediaElement.style.maxWidth = '100px';
-            mediaElement.style.maxHeight = '100px';
-            mediaElement.style.margin = '5px'; 
-            mediaElement.style.borderRadius = '4px'; 
-            mediaElement.style.objectFit = 'cover';
-            
-            previewContainer.appendChild(mediaElement);
+        rects.forEach(rect => {
+            rect.setAttribute("width", width);
+            rect.setAttribute("height", height);
+            rect.style.setProperty("--perimeter", perimeter);
+            rect.style.strokeDasharray = perimeter;
+            rect.style.strokeDashoffset = perimeter;
         });
     }
 
-   
+    /* ===== Drop Zone Logic ===== */
+    const dropZone = document.getElementById("mediaDropZone");
+    const fileInput = document.getElementById("mediaFile");
+    const preview = document.getElementById("mediaPreview");
 
+    if (!dropZone) return;
+
+    dropZone.addEventListener("click", () => fileInput.click());
+
+    ["dragenter", "dragover"].forEach(eventName => {
+        dropZone.addEventListener(eventName, e => {
+            e.preventDefault();
+            dropZone.classList.add("highlight");
+        });
+    });
+
+    ["dragleave", "drop"].forEach(eventName => {
+        dropZone.addEventListener(eventName, e => {
+            e.preventDefault();
+            dropZone.classList.remove("highlight");
+        });
+    });
+
+    dropZone.addEventListener("drop", e => {
+        let files = e.dataTransfer.files;
+        handleFiles(files);
+    });
+
+    fileInput.addEventListener("change", e => {
+        handleFiles(e.target.files);
+    });
+
+    function handleFiles(files) {
+        preview.innerHTML = "";
+        [...files].forEach(file => {
+            const url = URL.createObjectURL(file);
+            const elem = document.createElement(file.type.startsWith("image") ? "img" : "video");
+            if (file.type.startsWith("video")) elem.controls = true;
+            elem.src = url;
+            preview.appendChild(elem);
+        });
+    }
 });
