@@ -9,21 +9,11 @@
 
 {% block content %}
 
-<div class="posts-view-page"> 
+<div class="posts-view-page">
 
-    <h2 class="section-title">{{ page_title }}</h2>
-    <p class="section-subtitle">
-        {% if page_title == "All Posts" %}
-            All posts created by @{{ profile_user.username }}
-        {% elif page_title == "Liked Posts" %}
-            Posts liked by @{{ profile_user.username }}
-        {% elif page_title == "Bookmarked Posts" %}
-            Posts bookmarked by @{{ profile_user.username }}
-        {% elif page_title == "Commented Posts" %}
-            Posts commented on by @{{ profile_user.username }}
-        {% endif %}
-    </p>
-
+    <h2 class="posts-header-title">
+        {{ page_title }} ({{ posts.count }})
+    </h2>
 
     {% if posts %}
         <div class="posts-wrapper">
@@ -36,7 +26,6 @@
     {% else %}
         <p class="posts-placeholder">No posts to display.</p>
     {% endif %}
-
 
 </div>
 

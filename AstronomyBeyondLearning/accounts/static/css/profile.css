@@ -96,10 +96,9 @@
     cursor: pointer;
     transition: 0.3s ease;
     position: relative;
-    text-decoration: none; /* منع الخط الأزرق */
+    text-decoration: none; 
 }
 
-/* الأيقونات */
 .edit-btn i,
 .bookmark-btn i {
     font-size: 22px;
@@ -107,14 +106,12 @@
     transition: 0.3s ease;
 }
 
-/* Hover */
 .edit-btn:hover,
 .bookmark-btn:hover {
     background: rgba(255,255,255,0.15);
     transform: translateY(-3px);
 }
 
-/* Tooltip */
 .edit-btn::after,
 .bookmark-btn::after {
     content: attr(data-tooltip);
@@ -140,9 +137,7 @@
 }
 
 
-/* =========================================================
-   RIGHT PANEL
-   ========================================================= */
+
 
 .profile-right {
     background: #0e0e0e;
@@ -184,9 +179,7 @@
     margin: 18px 0 25px;
 }
 
-/* =========================================================
-   GRID FOR POSTS
-   ========================================================= */
+
 
 .user-posts {
     display: grid;
@@ -203,9 +196,7 @@
     .user-posts { grid-template-columns: repeat(1, 1fr); }
 }
 
-/* =========================================================
-   MINI POST CARD
-   ========================================================= */
+
 
 .mini-post-card {
     display: flex;
@@ -253,9 +244,7 @@
     text-align: left;
 }
 
-/* =========================================================
-   STAT ICONS (LIKE + COMMENTS)
-   ========================================================= */
+
 
 .mini-post-stats {
     display: flex;
@@ -278,9 +267,6 @@
     filter: drop-shadow(0 0 4px rgba(120,150,255,0.4));
 }
 
-/* =========================================================
-   VIEW MORE BUTTON
-   ========================================================= */
 
 .btn-row-right {
     display: flex;
@@ -308,9 +294,7 @@
     transform: translateY(-2px);
 }
 
-/* =========================================================
-   PAGE BACKGROUND
-   ========================================================= */
+
 
 body {
     background: url("/static/images/bgspace3.jpg") no-repeat center center fixed;

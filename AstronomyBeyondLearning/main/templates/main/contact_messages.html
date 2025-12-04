@@ -1,0 +1,73 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact_messages.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+<div class="messages-page-container">
+
+    <h1 class="messages-title">
+        USER MESSAGES <span>({{ count }})</span>
+    </h1>
+
+    <div class="messages-grid">
+
+        {% for msg in messages %}
+        <div class="msg-card">
+
+            <div class="msg-header">
+
+                <div class="msg-avatar">
+                    <span class="material-icons">account_circle</span>
+                </div>
+
+                <div class="msg-user">
+                    <h3>{{ msg.first_name }} {{ msg.last_name }}</h3>
+                    <a href="mailto:{{ msg.email }}">{{ msg.email }}</a>
+                </div>
+
+            </div>
+
+            <p class="msg-text">
+                {{ msg.message }}
+            </p>
+
+            {% if msg.phone %}
+                <p class="msg-phone">📱 {{ msg.phone }}</p>
+            {% endif %}
+
+            <p class="msg-time">
+                {{ msg.created_at|date:"M d, Y — h:i A" }}
+            </p>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="pagination-container">
+
+        {% if messages.has_previous %}
+            <a class="page-btn" href="?page={{ messages.previous_page_number }}">&laquo; Prev</a>
+        {% else %}
+            <span class="page-btn disabled">&laquo; Prev</span>
+        {% endif %}
+
+        <span class="page-number">
+            Page {{ messages.number }} of {{ messages.paginator.num_pages }}
+        </span>
+
+        {% if messages.has_next %}
+            <a class="page-btn" href="?page={{ messages.next_page_number }}">Next &raquo;</a>
+        {% else %}
+            <span class="page-btn disabled">Next &raquo;</span>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

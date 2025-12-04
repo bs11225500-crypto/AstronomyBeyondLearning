@@ -32,8 +32,9 @@
                 <i class="material-icons">manage_accounts</i>
             </a>
 
-            <a class="bookmark-btn" href="#" data-tooltip="Saved planets">
+            <a class="bookmark-btn" href="{% url 'accounts:saved_planets' profile_user.username %}" data-tooltip="Saved planets">
                 <i class="material-icons">bookmark</i>
+
             </a>
         </div>
         {% endif %}

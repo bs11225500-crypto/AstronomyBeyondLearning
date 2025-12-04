@@ -1,0 +1,45 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %} Bookmarked Planets {% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/saved_planets.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+<div class="saved-planets-container">
+
+    <div class="saved-header">
+        <h2>Bookmarked Planets  ({{ saved_planets.count }})</h2>
+    </div>
+
+    {% if saved_planets %}
+        <div class="planets-grid">
+
+            {% for item in saved_planets %}
+                <div class="planet-card">
+
+                    <div class="planet-img-wrapper">
+                        <img src="{{ item.planet.image.url }}" class="planet-img" alt="{{ item.planet.name }}">
+                    </div>
+
+                    <div class="planet-info">
+                        <h3>{{ item.planet.name }}</h3>
+                        <a href="{% url 'planets:planet_detail' item.planet.id %}">
+                            View details →
+                        </a>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+    {% else %}
+        <p class="empty-msg">No saved planets yet.</p>
+    {% endif %}
+
+</div>
+
+{% endblock content %}

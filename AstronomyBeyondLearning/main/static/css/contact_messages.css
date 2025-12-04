@@ -1,0 +1,115 @@
+.messages-page-container {
+    max-width: 1150px;
+    margin: 130px auto 50px;
+    color: #fff;
+    padding: 0 20px;
+}
+
+.messages-title {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.messages-title span {
+    color: #7fa6ff;
+}
+
+.messages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 30px;
+}
+
+.msg-card {
+    background: rgba(18, 20, 40, 0.75);
+    border: 1px solid rgba(130, 150, 255, 0.35);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 0 18px rgba(120, 140, 255, 0.3);
+    transition: 0.25s ease-in-out;
+}
+
+.msg-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 25px rgba(150, 170, 255, 0.55);
+}
+
+.msg-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.msg-avatar .material-icons {
+    font-size: 40px;
+    color: #8ab4ff;
+}
+
+.msg-user h3 {
+    font-size: 20px;
+    margin: 0;
+    color: #fff;
+    font-weight: 600;
+}
+
+.msg-user a {
+    font-size: 14px;
+    color: #9fc1ff;
+}
+
+.msg-text {
+    font-size: 16px;
+    color: #cdd7ff;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.msg-phone {
+    font-size: 14px;
+    color: #a8c0ff;
+    margin-top: 10px;
+}
+
+.msg-time {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #8899cc;
+    text-align: right;
+}
+.pagination-container {
+    margin-top: 40px;
+    text-align: center;
+    color: #fff;
+}
+
+.page-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: rgba(18, 20, 40, 0.75);
+    border: 1px solid rgba(130, 150, 255, 0.35);
+    margin: 0 10px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #9fc1ff;
+    transition: 0.2s ease;
+}
+
+.page-btn:hover {
+    background: rgba(130, 150, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.page-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.page-number {
+    margin: 0 15px;
+    font-size: 16px;
+    color: #cdd7ff;
+}

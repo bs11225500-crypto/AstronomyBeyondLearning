@@ -8,6 +8,7 @@ from .models import UserProfile
 from .forms import SignUpForm, SignInForm
 from posts.models import Post, PostLike, PostBookmark, PostComment
 from django.db.models import Count
+from planets.models import BookmarkPlanet
 
 
 
@@ -257,4 +258,26 @@ def user_posts_type_view(request, user_name, post_type):
         "profile_user": profile_user,
         "posts": posts,
         "page_title": page_title,
+    })
+
+
+
+
+def saved_planets_in_profile(request, username):
+
+    try:
+        profile_user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        messages.error(request, "User not found.")
+        return redirect("home")
+
+    if request.user != profile_user:
+        messages.error(request, "You are not allowed to view saved planets for this profile.")
+        return redirect("accounts:profile", username=request.user.username)
+
+    saved_planets = BookmarkPlanet.objects.filter(user=profile_user)
+
+    return render(request, "accounts/saved_planets.html", {
+        "profile_user": profile_user,
+        "saved_planets": saved_planets,
     })

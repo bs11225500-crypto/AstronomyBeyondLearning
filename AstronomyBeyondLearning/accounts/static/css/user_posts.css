@@ -71,3 +71,12 @@ body {
     background-size: cover;
     background-color: black;
 }
+
+.posts-header-title {
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: white;
+}
