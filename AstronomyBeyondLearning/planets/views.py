@@ -4,10 +4,6 @@ from .models import Planet,BookmarkPlanet
 from .forms import PlanetForm
 from django.core.paginator import Paginator
 
-
-# Create your views here.
-
-
 def planets_add_view(request):
 
     if not request.user.is_staff:
@@ -139,7 +135,6 @@ def toggle_bookmark_view(request, planet_id):
     return redirect("planets:planet_detail", planet_id=planet_id)
 
 
-#سيرش الكواكب
 def planets_search_view(request):
     query = request.GET.get("search")
     category = request.GET.get("category") 
