@@ -146,6 +146,26 @@
   </div>
 </section>
 
+<section class="featured-planets-section">
+
+    <h2 class="featured-title">Explore Planets</h2>
+
+
+    <div class="featured-grid">
+        {% for planet in planets|slice:":3" %}
+          {% include "planets/planet_card.html" with planet=planet %}
+        {% endfor %}
+    </div>
+
+    <div class="featured-more-wrapper top">
+        <a href="{% url 'planets:planets_list' %}" class="featured-more-btn">
+            More Planets →
+        </a>
+    </div>
+
+</section>
+
+
 <section class="contact-fullscreen">
 
     <img src="{% static 'images/contact_background.png' %}" class="contact-bg" alt="Contact Background">

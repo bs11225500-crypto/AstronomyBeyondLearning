@@ -620,3 +620,181 @@ main {
 .contact-btn:hover {
     background: rgba(255,255,255,0.3);
 }
+
+
+/* planet*/
+/* ============ FEATURED PLANETS SECTION ============ */
+
+.featured-planets-section {
+    width: 100%;
+    padding: 60px 0;
+    position: relative;
+    margin-top: 40px;  /* مسافة بسيطة وآمنة */
+}
+
+.featured-title {
+    text-align: center;
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.featured-grid {
+    width: 85%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+}
+
+.featured-card {
+    position: relative;
+    background: #0d0d0d;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 20px;
+    height: 240px;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.featured-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(255,255,255,0.15);
+}
+
+.featured-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 72%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .78;
+}
+
+.featured-content {
+    position: relative;
+    z-index: 3;
+    color: white;
+}
+
+.featured-content h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.featured-btn {
+    padding: 10px 18px;
+    border: 1px solid white;
+    border-radius: 12px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    transition: .3s;
+}
+
+.featured-btn:hover {
+    background: white;
+    color: black;
+}
+
+.featured-more-wrapper {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.featured-more-btn {
+    padding: 12px 30px;
+    border: 2px solid white;
+    border-radius: 14px;
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.featured-more-btn:hover {
+    background: white;
+    color: black;
+}
+/* card planet*/
+/* === Black Hole Style Card (Fixed Width + Full Image + Overlay Text) === */
+
+.bh-card {
+    width: 55%;                 /* أصغر من قبل */
+    max-width: 300px;           /* سقف العرض */
+    height: 260px;
+    margin: 0 auto 40px auto;   /* وسط + مسافة تحت */
+    background: #000;
+    border-radius: 26px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: 0.3s ease;
+}
+
+.bh-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 35px rgba(255,255,255,0.15);
+}
+
+/* الصورة */
+.bh-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* الصورة تظهر كاملة بدون قص */
+    filter: brightness(85%);
+    transition: 0.3s ease-in-out;
+}
+
+.bh-card:hover .bh-img {
+    filter: brightness(100%);
+}
+
+/* الكتابة فوق الصورة */
+.bh-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px;
+    z-index: 3;
+}
+
+/* الزر */
+.bh-btn {
+    align-self: flex-start;
+    padding: 10px 20px;
+    border-radius: 14px;
+    border: 2px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: .3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.bh-btn:hover {
+    background: white;
+    color: black;
+}
+
+/* عنوان الكوكب */
+.bh-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.7);
+}
+.featured-more-wrapper.top {
+    display: flex;
+    justify-content: flex-end; /* اليمين */
+    margin-bottom: 15px;
+    width: 85%; /* نفس عرض الكروت عشان يكون بمحاذاتهم */
+    margin-left: auto;
+    margin-right: auto;
+}

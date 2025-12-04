@@ -1,13 +1,10 @@
-<div class="planet-card">
+<div class="bh-card">
 
-    <img src="{{ planet.image.url }}" class="planet-img">
+    <img src="{{ planet.image.url }}" class="bh-img" alt="{{ planet.name }}">
 
-    <div class="planet-info">
-        <h3 class="planet-name">{{ planet.name }}</h3>
-
-        <a href="{% url 'planets:planet_detail' planet.id %}" class="planet-btn">
-            View Details
-        </a>
+    <div class="bh-overlay">
+        <a href="{% url 'planets:planet_detail' planet.id %}" class="bh-btn">Read More →</a>
+        <h3 class="bh-title">{{ planet.name }}</h3>
     </div>
 
 </div>
