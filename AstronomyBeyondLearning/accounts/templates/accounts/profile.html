@@ -9,7 +9,7 @@
 
 {% block content %}
 
-<div class="profile-container">
+<div class="profile-container reveal">
 
     <div class="profile-sidebar">
         <img 
@@ -45,9 +45,9 @@
     </div>
 
 
-    <div class="profile-right">
+    <div class="profile-right reveal">
 
-        <h2 class="section-title">About</h2>
+        <h2 class="section-title ">About</h2>
 
         <p class="info-text"><strong>Email:</strong> {{ profile_user.email }}</p>
 
@@ -72,24 +72,24 @@
 
         <div class="section-divider"></div>
 
-        <h2 class="section-title">Posts</h2>
-        <p class="section-subtitle">Recent posts by {{ profile_user.username }}</p>
+        <h2 class="section-title reveal">Posts</h2>
+        <p class="section-subtitle reveal">Recent posts by {{ profile_user.username }}</p>
 
         {% if recent_posts %}
-            <div class="user-posts">
+            <div class="user-posts reveal">
                 {% for post in recent_posts %}
                     {% include "accounts/post_card.html" with post=post %}
                 {% endfor %}
             </div>
 
-            <div class="btn-row-right">
+            <div class="btn-row-right reveal">
                 <a href="{% url 'accounts:user_posts_type' profile_user.username 'all' %}" class="neon-btn">
                     View all posts →
                 </a>
             </div>
 
         {% else %}
-            <p class="posts-placeholder">No posts yet.</p>
+            <p class="posts-placeholder reveal">No posts yet.</p>
         {% endif %}
 
 
@@ -97,60 +97,60 @@
 
         {% if request.user == profile_user %}
 
-        <div class="section-divider"></div>
-        <h2 class="section-title">Liked Posts</h2>
+        <div class="section-divider reveal"></div>
+        <h2 class="section-title reveal" >Liked Posts</h2>
 
         {% if liked_posts %}
-            <div class="user-posts">
+            <div class="user-posts reveal">
                 {% for post in liked_posts %}
                     {% include "accounts/post_card.html" with post=post %}
                 {% endfor %}
             </div>
-            <div class="btn-row-right">
+            <div class="btn-row-right reveal">
                 <a href="{% url 'accounts:user_posts_type' profile_user.username 'liked' %}" class="neon-btn">
                     View all liked posts →
                 </a>
             </div>
         {% else %}
-            <p class="posts-placeholder">No liked posts.</p>
+            <p class="posts-placeholder reveal">No liked posts.</p>
         {% endif %}
 
 
-        <div class="section-divider"></div>
-        <h2 class="section-title">Bookmarked Posts</h2>
+        <div class="section-divider reveal"></div>
+        <h2 class="section-title reveal">Bookmarked Posts</h2>
 
         {% if bookmarked_posts %}
-            <div class="user-posts">
+            <div class="user-posts reveal">
                 {% for post in bookmarked_posts %}
                     {% include "accounts/post_card.html" with post=post %}
                 {% endfor %}
             </div>
-            <div class="btn-row-right">
+            <div class="btn-row-right reveal">
                 <a href="{% url 'accounts:user_posts_type' profile_user.username 'bookmarked' %}" class="neon-btn">
                     View all bookmarked posts →
                 </a>
             </div>
         {% else %}
-            <p class="posts-placeholder">No bookmarked posts.</p>
+            <p class="posts-placeholder reveal">No bookmarked posts.</p>
         {% endif %}
 
 
-        <div class="section-divider"></div>
-        <h2 class="section-title">Commented Posts</h2>
+        <div class="section-divider reveal"></div>
+        <h2 class="section-title reveal">Commented Posts</h2>
 
         {% if commented_posts %}
-            <div class="user-posts">
+            <div class="user-posts reveal">
                 {% for post in commented_posts %}
                     {% include "accounts/post_card.html" with post=post %}
                 {% endfor %}
             </div>
-            <div class="btn-row-right">
+            <div class="btn-row-right reveal">
                 <a href="{% url 'accounts:user_posts_type' profile_user.username 'commented' %}" class="neon-btn">
                     View all commented posts →
                 </a>
             </div>
         {% else %}
-            <p class="posts-placeholder">No commented posts.</p>
+            <p class="posts-placeholder reveal">No commented posts.</p>
         {% endif %}
 
         {% endif %} 

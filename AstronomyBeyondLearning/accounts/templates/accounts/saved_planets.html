@@ -9,17 +9,17 @@
 
 {% block content %}
 
-<div class="saved-planets-container">
+<div class="saved-planets-container reveal">
 
-    <div class="saved-header">
+    <div class="saved-header reveal">
         <h2>Bookmarked Planets ({{ saved_planets.paginator.count }})</h2>
     </div>
 
     {% if saved_planets %}
-        <div class="planets-grid">
+        <div class="planets-grid reveal">
 
             {% for item in saved_planets %}
-                <div class="saved-card-wrapper">
+                <div class="saved-card-wrapper reveal">
                     {% include "planets/planet_card.html" with planet=item.planet %}
                 </div>
             {% endfor %}
@@ -27,7 +27,7 @@
         </div>
 
         {% if saved_planets.paginator.num_pages > 1 %}
-        <div class="pagination-container">
+        <div class="pagination-container reveal">
 
             {% if saved_planets.has_previous %}
                 <a class="page-btn" href="?page={{ saved_planets.previous_page_number }}">&laquo; Prev</a>
@@ -49,7 +49,7 @@
         {% endif %}
 
     {% else %}
-        <p class="empty-msg">No saved planets yet.</p>
+        <p class="empty-msg reveal">No saved planets yet.</p>
     {% endif %}
 
 </div>

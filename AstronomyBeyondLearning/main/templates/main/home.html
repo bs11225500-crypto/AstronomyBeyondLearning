@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<section class="hero">
+<section class="hero no-reveal">
 
     <video class="hero-video" autoplay muted loop playsinline>
         <source src="{% static 'videos/hero.mp4' %}" type="video/mp4">
@@ -14,70 +14,71 @@
     <div class="hero-content">
         
         <div class="abl-container">
-        <div class="abl-letters" data-aos="fade-up" data-aos-delay="200">
-            <span>A</span>
-            <span>B</span>
-            <span>L</span>
-        </div>
+            <div class="abl-letters" data-aos="fade-up" data-aos-delay="200">
+                <span>A</span>
+                <span>B</span>
+                <span>L</span>
+            </div>
 
-        <div class="abl-words" data-aos="fade-up" data-aos-delay="400">
-            <span>Astronomy</span>
-            <span>Beyond</span>
-            <span>Learning</span>
+            <div class="abl-words" data-aos="fade-up" data-aos-delay="400">
+                <span>Astronomy</span>
+                <span>Beyond</span>
+                <span>Learning</span>
+            </div>
         </div>
-    </div>
 
     </div>
 
 </section>
-<section class="planet-explorer">
+
+
+<section class="planet-explorer no-reveal">
+
   <div class="planet-card">
+
     <video class="card-bg-video" autoplay muted loop playsinline>
         <source src="{% static 'videos/space.mp4' %}" type="video/mp4">
     </video>
 
     <aside class="planet-menu">
-      <button class="planet-btn active" data-planet="intro">
+      <button class="planet-btn  active " data-planet="intro">
         <span class="planet-dot intro-dot"></span>
         <span class="planet-name">Explore</span>
       </button>
 
-      <button class="planet-btn" data-planet="sun">
+      <button class="planet-btn " data-planet="sun">
         <span class="planet-dot sun-dot"></span>
         <span class="planet-name">Sun</span>
       </button>
 
-      <button class="planet-btn" data-planet="earth">
+      <button class="planet-btn " data-planet="earth">
         <span class="planet-dot earth-dot"></span>
         <span class="planet-name">Earth</span>
       </button>
 
-      <button class="planet-btn" data-planet="moon">
+      <button class="planet-btn " data-planet="moon">
         <span class="planet-dot moon-dot"></span>
         <span class="planet-name">Moon</span>
       </button>
 
-      <button class="planet-btn" data-planet="star">
+      <button class="planet-btn " data-planet="star">
         <span class="planet-dot star-dot"></span>
         <span class="planet-name">Star</span>
       </button>
-
-
     </aside>
     
 
     <div class="planet-display">
 
       <div class="planet-panel active" id="intro">
-        <div class="intro-container">
-            <h1 class="intro-title">COSMIC AYAT</h1>
-            <p class="intro-subtitle">Quranic Verses About the Universe</p>
+        <div class="intro-container reveal">
+            <h1 class="intro-title reveal">COSMIC AYAT</h1>
+            <p class="intro-subtitle reveal">Quranic Verses About the Universe</p>
         </div>
       </div>
 
-      
       <div class="planet-panel" id="sun">
-        <div class="planet-image">
+        <div class="planet-image ">
           <img src="{% static 'images/sun.png' %}" alt="Sun">
         </div>
         <audio class="planet-audio">
@@ -87,11 +88,9 @@
           <h3>STAR</h3>
           <h1>SUN</h1>
           <p class="planet-ayah" data-text="لَا الشَّمْسُ يَنبَغِي لَهَا أَن تُدْرِكَ الْقَمَرَ وَلَا اللَّيْلُ سَابِقُ النَّهَارِ ۚ وَكُلٌّ فِي فَلَكٍ يَسْبَحُونَ"></p>
-
         </div>
       </div>
 
-     
       <div class="planet-panel" id="earth">
         <div class="planet-image">
           <img src="{% static 'images/earth.png' %}" alt="Earth">
@@ -103,11 +102,9 @@
           <h3>PLANET</h3>
           <h1>EARTH</h1>
           <p class="planet-ayah" data-text="وَالْأَرْضَ مَدَدْنَاهَا وَأَلْقَيْنَا فِيهَا رَوَاسِيَ وَأَنبَتْنَا فِيهَا مِن كُلِّ شَيْءٍ مَّوْزُونٍ "></p>
-
         </div>
       </div>
 
-      
       <div class="planet-panel" id="moon">
         <div class="planet-image">
           <img src="{% static 'images/moon.png' %}" alt="Moon">
@@ -119,7 +116,6 @@
           <h3>MOON</h3>
           <h1>MOON</h1>
           <p class="planet-ayah" data-text="وَالْقَمَرَ قَدَّرْنَاهُ مَنَازِلَ حَتَّىٰ عَادَ كَالْعُرْجُونِ الْقَدِيمِ"></p>
-
         </div>
       </div>
 
@@ -135,29 +131,29 @@
         <div class="planet-info">
             <h3>STAR</h3>
             <h1>TYPE O STAR</h1>
-
-            <p class="planet-ayah" 
-            data-text="وَلَقَدْ جَعَلْنَا فِي السَّمَاءِ بُرُوجًا وَزَيَّنَّاهَا لِلنَّاظِرِينَ"></p>
+            <p class="planet-ayah" data-text="وَلَقَدْ جَعَلْنَا فِي السَّمَاءِ بُرُوجًا وَزَيَّنَّاهَا لِلنَّاظِرِينَ"></p>
         </div>
       </div>
 
-
     </div>
+
   </div>
 </section>
 
-<section class="featured-planets-section">
 
-    <h2 class="featured-title">Explore Planets</h2>
+<section class="featured-planets-section reveal">
 
+    <h2 class="featured-title reveal">Explore Planets</h2>
 
     <div class="featured-grid">
         {% for planet in planets|slice:":3" %}
-          {% include "planets/planet_card.html" with planet=planet %}
+            <div class="reveal">
+                {% include "planets/planet_card.html" with planet=planet %}
+            </div>
         {% endfor %}
     </div>
 
-    <div class="featured-more-wrapper top">
+    <div class="featured-more-wrapper top reveal">
         <a href="{% url 'planets:planets_list' %}" class="featured-more-btn">
             More Planets →
         </a>
@@ -166,21 +162,20 @@
 </section>
 
 
-<section class="contact-fullscreen">
+<section class="contact-fullscreen reveal">
 
     <img src="{% static 'images/contact_background.png' %}" class="contact-bg" alt="Contact Background">
 
     <div class="contact-overlay"></div>
 
-    <div class="contact-card">
+    <div class="contact-card reveal">
 
-        <h2>CONTACT US</h2>
+        <h2 class="reveal">CONTACT US</h2>
 
         <form method="POST">
             {% csrf_token %}
 
-
-            <div class="row">
+            <div class="row reveal">
                 <div class="field">
                     <label>First Name</label>
                     <input type="text" name="first_name" required>
@@ -192,7 +187,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row reveal">
                 <div class="field">
                     <label>Email</label>
                     <input type="email" name="email" required>
@@ -204,17 +199,17 @@
                 </div>
             </div>
 
-            <div class="field">
+            <div class="field reveal">
                 <label>Message</label>
                 <textarea rows="4" name="message" required></textarea>
             </div>
 
-            <div class="checkbox">
+            <div class="checkbox reveal">
                 <input type="checkbox" id="terms" name="terms">
                 <label for="terms">I accept the terms of data processing.</label>
             </div>
 
-            <button type="submit" class="contact-btn">Submit</button>
+            <button type="submit" class="contact-btn reveal">Submit</button>
 
         </form>
     </div>
