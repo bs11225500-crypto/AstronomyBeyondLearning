@@ -8,15 +8,13 @@
 {% endblock extra_css %}
 
 {% block content %}
-<img src="{% static 'images/bgspace3.jpg' %}" class="stars-bg">
 
 {% if page_obj.number == 1 %}
-<!--OVERVIEW -->
 
-<div class="planet-hero-card">
+<div class="planet-hero-card reveal">
 
-    <div class="planet-left">
-        <h1 class="planet-name">{{ planet.name }}</h1>
+    <div class="planet-left reveal">
+        <h1 class="planet-name reveal">{{ planet.name }}</h1>
           {% if user.is_authenticated %}
             <a href="{% url 'planets:bookmark' planet.id %}" class="bookmark-icon">
                 {% if is_bookmarked %}
@@ -36,11 +34,11 @@
         </a>
         {% endif %}
 
-        <p class="planet-category">{{ planet.get_category_display }}</p>
+        <p class="planet-category reveal">{{ planet.get_category_display }}</p>
 
-        <p class="planet-desc">{{ planet.description }}</p>
+        <p class="planet-desc reveal">{{ planet.description }}</p>
 
-        <div class="btns-wrapper">
+        <div class="btns-wrapper reveal">
             <a href="{% url 'planets:planets_list' %}" class="detail-btn">← Back</a>
             <a href="?page=2" class="detail-btn">Next →</a>
             
@@ -49,7 +47,7 @@
 
     </div>
 
-    <div class="planet-right">
+    <div class="planet-right reveal">
         {% if planet.image %}
         <img src="{{ planet.image.url }}" class="planet-circle-img">
         {% endif %}
@@ -59,30 +57,29 @@
 
 
 {% else %}
-<!--DETAILS -->
 
-<h2 class="facts-title">Detailed Planet Facts</h2>
+<h2 class="facts-title reveal">Detailed Planet Facts</h2>
 
-<div class="facts-layout">
+<div class="facts-layout reveal">
 
-    <div class="facts-left">
+    <div class="facts-left reveal">
 
         {% if planet.distance_from_sun %}
-        <div class="fact-item">
+        <div class="fact-item reveal">
             <h4>Distance from Sun</h4>
             <p>{{ planet.distance_from_sun }}</p>
         </div>
         {% endif %}
 
         {% if planet.temperature %}
-        <div class="fact-item">
+        <div class="fact-item reveal">
             <h4>Temperature</h4>
             <p>{{ planet.temperature }}</p>
         </div>
         {% endif %}
 
         {% if planet.day_length %}
-        <div class="fact-item">
+        <div class="fact-item reveal">
             <h4>Day Length</h4>
             <p>{{ planet.day_length }}</p>
         </div>
@@ -90,37 +87,37 @@
 
     </div>
 
-    <div class="planet-rotate">
+    <div class="planet-rotate reveal">
         <div class="planet-rotate-img">
             <img src="{{ planet.image.url }}" alt="{{ planet.name }}">
         </div>
     </div>
 
-    <div class="facts-right">
+    <div class="facts-right reveal">
 
         {% if planet.gravity %}
-        <div class="fact-item">
+        <div class="fact-item reveal">
             <h4>Gravity</h4>
             <p>{{ planet.gravity }}</p>
         </div>
         {% endif %}
 
         {% if planet.radius %}
-        <div class="fact-item">
+        <div class="fact-item reveal">
             <h4>Radius</h4>
             <p>{{ planet.radius }}</p>
         </div>
         {% endif %}
 
         {% if planet.moons_count %}
-        <div class="fact-item">
+        <div class="fact-item reveal">
             <h4>Moons Count</h4>
             <p>{{ planet.moons_count }}</p>
         </div>
         {% endif %}
 
         {% if planet.atmosphere %}
-        <div class="fact-item">
+        <div class="fact-item reveal">
             <h4>Atmosphere</h4>
             <p>{{ planet.atmosphere }}</p>
         </div>
@@ -131,10 +128,10 @@
 </div>
 
 
-<div class="weight-box">
+<div class="weight-box reveal">
     <h3>Calculate Your Weight on {{ planet.name }}</h3>
 
-    <div class="weight-row">
+    <div class="weight-row reveal">
         <label>Your weight on Earth (kg):</label>
         <input type="number" id="earthWeight" placeholder="e.g., 60">
         <button onclick="calculateWeight()">Calculate</button>

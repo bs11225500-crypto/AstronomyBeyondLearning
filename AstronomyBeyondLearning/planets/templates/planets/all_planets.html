@@ -8,7 +8,7 @@
 {% endblock extra_css %}
 
 {% block content %}
-<div class="planet-gallery">
+<div class="planet-gallery reveal">
 
   <form method="GET" action="{% url 'planets:planets_search_view' %}" class="search-bar-container">
         <input 
@@ -16,9 +16,9 @@
             name="search" 
             placeholder="Search for a planet"
             value="{{ query }}"
-            class="search-input"
+            class="search-input reveal"
         >
-        <select name="category" class="search-input">
+        <select name="category" class="search-input reveal">
             <option value="">Select Category</option>
             <option value="Gas Giant" {% if category == "Gas Giant" %}selected{% endif %}>Gas Giant</option>
             <option value="Terrestrial" {% if category == "Terrestrial" %}selected{% endif %}>Terrestrial</option>
@@ -28,33 +28,34 @@
 
         </select>
 
-        <button class="search-button">Search</button>
+        <button class="search-button reveal">Search</button>
     </form>
 
 
 
 
     {% for p in planets %}
-    <div class="planet-card" data-index="{{ forloop.counter0 }}">
+    <div class="planet-card reveal" data-index="{{ forloop.counter0 }}">
         
 
+        <button class="arrow left" onclick="prevPlanet()">&#10094;</button>
+        <button class="arrow right" onclick="nextPlanet()">&#10095;</button>
 
-  
+        
     
-        <div class="planet-card-content">
+        <div class="planet-card-content reveal">
             <h1>{{ p.name }}</h1>
             <a href="{% url 'planets:planet_detail' p.id %}" class="detail-btn">View Details</a>
         </div>
 
-        <div class="planet-img-wrapper">
+        <div class="planet-img-wrapper reveal">
             <img src="{{ p.image.url }}" alt="{{ p.name }}">
         </div>
 
     </div>
     {% endfor %}
 
-    <button class="arrow left" onclick="prevPlanet()">&#10094;</button>
-    <button class="arrow right" onclick="nextPlanet()">&#10095;</button>
+
 
 </div>
 

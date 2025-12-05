@@ -1,34 +1,29 @@
+
 body {
     background-image: url('/static/images/bgspace3.jpg');
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed; 
-    color: white; 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
 }
+
+
 .planet-gallery {
     width: 100%;
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     text-align: center;
-    
+    padding: 20px;
 }
-.background-space {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    opacity: 0.35; 
-}
+
 
 .planet-card {
     display: none;
+    margin: 20px 0;
 }
 
 .planet-card.active {
@@ -49,13 +44,13 @@ body {
     font-weight: 600;
 }
 
+
 .planet-img-wrapper {
     width: 440px;
     height: 440px;
     margin: 20px auto 40px;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: none;
 }
 
 .planet-img-wrapper img {
@@ -65,39 +60,55 @@ body {
     animation: rotatePlanet 18s linear infinite;
 }
 
-
 @keyframes rotatePlanet {
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }
 }
 
 
-.arrow {
+.planet-card .arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255,255,255,0.3);
-    border: none;
-    padding: 18px 22px;
+    z-index: 20;
+
+    width: 65px;
+    height: 65px;
+    font-size: 30px;
     border-radius: 50%;
-    cursor: pointer;
-    font-size: 32px;
-    backdrop-filter: blur(4px);
-    transition: .3s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+
+    color: white;
+    transition: 0.25s ease;
 }
 
-.arrow:hover {
-    background: rgba(255,255,255,0.6);
+.planet-card .arrow:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-50%) scale(1.08);
 }
 
-.arrow.left { left: 22%; }
-.arrow.right { right: 22%; }
+.planet-card .arrow.left {
+    left: 22%;
+}
+
+.planet-card .arrow.right {
+    right: 22%;
+}
+
 
 .search-bar-container {
     display: flex;
     justify-content: center;
     margin-top: 80px;
-    
 }
 
 .search-input {
@@ -110,7 +121,6 @@ body {
     background-color: #444;
     color: white;
     margin-top: 20px;
-    
 }
 
 .search-button {
@@ -127,63 +137,32 @@ body {
     background-color: #0d47a1;
 }
 
-
-.planet-card {
-    display: none;
-    margin: 20px 0;
-}
-
-.planet-card.active {
-    display: block;
-}
-
-.planet-gallery {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    text-align: center;
-    padding: 20px;
-}
-
-
+/* responsive*/
 @media screen and (max-width: 1024px) {
-    .planet-gallery {
-        padding: 10px; 
-    }
-
-    .search-input {
-        width: 60%; 
-    }
 
     .planet-img-wrapper {
-        width: 350px; 
+        width: 350px;
         height: 350px;
     }
 
     .planet-card-content h1 {
-        font-size: 36px; 
+        font-size: 36px;
     }
 
-    .search-bar-container {
-        width: 90%; 
+    .search-input {
+        width: 60%;
     }
 
     .arrow.left, .arrow.right {
-        font-size: 28px; 
+        font-size: 28px;
     }
 }
 
+
 @media screen and (max-width: 768px) {
-    .planet-gallery {
-        padding: 20px 10px; /
-    }
 
     .planet-img-wrapper {
-        width: 280px; 
+        width: 280px;
         height: 280px;
     }
 
@@ -195,50 +174,80 @@ body {
         width: 80%;
     }
 
-    .arrow.left, .arrow.right {
-        font-size: 24px; 
-    }
-
-    .search-bar-container {
-        margin-top: 30px; 
+    .search-button {
         width: 100%;
     }
 
-    .search-button {
-        width: 100%; 
-        padding: 10px;
+    .arrow.left, .arrow.right {
+        font-size: 24px;
+    }
+
+    .search-bar-container {
+        margin-top: 30px;
+        width: 100%;
     }
 }
 
+
 @media screen and (max-width: 480px) {
-    .planet-gallery {
-        padding: 10px; 
-    }
 
     .planet-img-wrapper {
-        width: 220px; 
+        width: 220px;
         height: 220px;
     }
 
     .planet-card-content h1 {
-        font-size: 24px; 
+        font-size: 24px;
     }
 
     .search-input {
-        width: 90%; 
-    }
-
-    .arrow.left, .arrow.right {
-        font-size: 20px; 
+        width: 90%;
     }
 
     .search-button {
-        width: 100%; 
-        padding: 10px;
+        width: 100%;
+    }
+
+    .arrow.left, .arrow.right {
+        font-size: 20px;
     }
 
     .search-bar-container {
-        margin-top: 20px; 
+        margin-top: 20px;
         gap: 10px;
     }
+}
+
+@media (max-width: 850px) {
+    .search-bar-container {
+        margin-top: 140px !important;
+        width: 90% !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .search-input {
+        width: 100% !important;
+        margin-right: 0 !important;
+    }
+
+    .search-button {
+        width: 100% !important;
+    }
+
+    .planet-card .arrow {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        top: 52%;
+    }
+
+    .planet-card .arrow.left { left: 6px; }
+    .planet-card .arrow.right { right: 6px; }
+}
+
+
+@media (min-width: 851px) {
+    .planet-card .arrow.left { left: 20px; }
+    .planet-card .arrow.right { right: 20px; }
 }

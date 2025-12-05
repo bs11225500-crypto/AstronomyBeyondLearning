@@ -8,19 +8,22 @@
 {% endblock %}
 
 {% block content %}
-<div class="post-detail-container">
+<div class="post-detail-container reveal">
     <div class="post-card-detail fade-in">
         <div class="post-header">
             <h1 class="post-title">{{ post.title }}</h1>
             <p class="post-meta">
                 Posted by 
-                <span class="author-name">{{ post.author.username }}</span> 
-                on {{ post.created_at|date:"M d, Y, h:i A" }}
+                    <a href="{% url 'accounts:user_profile_view' post.author.username %}" 
+                    class="author-name"
+                    style="color:#7EC8FF; text-decoration:none; font-weight:bold;">
+                        {{ post.author.username }}
+                    </a> on {{ post.created_at|date:"M d, Y, h:i A" }}
             </p>
         </div>
 
         {% if post.media_file %}
-            <div class="media-container">
+            <div class="media-container reveal">
                 {% with file_ext=post.media_file.url|lower|slice:"-4:" %}
                     {% if file_ext == ".mp4" or file_ext == ".mov" %}
                         <video controls src="{{ post.media_file.url }}" class="post-media"></video>
@@ -31,8 +34,8 @@
             </div>
         {% endif %}
 
-        <div class="detail-actions-bar">
-            <div class="like-bookmark-group">
+        <div class="detail-actions-bar reveal">
+            <div class="like-bookmark-group reveal">
                 {% if request.user.is_authenticated %}
                     <form method="POST" action="{% url 'posts:like_post' post_id=post.id %}" style="display: inline;">
                         {% csrf_token %}
@@ -65,7 +68,7 @@
                 {% endif %}
             </div>
 
-       <div class="edit-delete-group">
+       <div class="edit-delete-group reveal">
     {% if request.user.is_authenticated and post.author == request.user or request.user.is_superuser or request.user.is_staff %}
         <a class="icon-btn edit" href="{% url 'posts:edit_post' post_id=post.id %}" data-tooltip="Edit Post">
             <i class="material-icons">edit</i> 
@@ -88,30 +91,36 @@
         </div>
     </div>
 
-    <div class="comments-section" id="comments">
+    <div class="comments-section reveal" id="comments">
         <h2>Comments ({{ comments.count }})</h2>
         
-        <div class="comments-list" id="comments-list">
+        <div class="comments-list reveal" id="comments-list">
             {% for comment in comments %}
-            <div class="comment-box">
-                <p><strong>{{ comment.user.username }}</strong> - {{ comment.created_at|date:"M d, Y" }}</p>
+            <div class="comment-box reveal">
+            <p>
+                <a href="{% url 'accounts:user_profile_view' comment.user.username %}" 
+                style="color:#7EC8FF; text-decoration:none; font-weight:bold;">
+                    {{ comment.user.username }}
+                </a>
+                - {{ comment.created_at|date:"M d, Y" }}
+            </p>
                 <p>{{ comment.body }}</p>
             </div>
             {% empty %}
-            <p class="no-comments-message">No comments yet. Be the first!</p>
+            <p class="no-comments-message reveal">No comments yet. Be the first!</p>
             {% endfor %}
         </div>
 
         {% if request.user.is_authenticated %}
-        <div class="comment-form-box">
+        <div class="comment-form-box reveal">
             <form method="POST" action="{% url 'posts:add_comment' post_id=post.id %}">
                 {% csrf_token %}
-                <textarea name="comment_body" id="comment-input" placeholder="Add your comment..." class="form-textarea" required></textarea>
-                <button type="submit" class="btn btn-publish mt-2">Post Comment</button>
+                <textarea name="comment_body" id="comment-input" placeholder="Add your comment..." class="form-textarea reveal" required></textarea>
+                <button type="submit" class="btn btn-publish mt-2 reveal">Post Comment</button>
             </form>
         </div>
         {% else %}
-        <p class="login-prompt">Please <a href="{% url 'accounts:sign_in' %}">sign_in</a> to add a comment.</p>
+        <p class="login-prompt reveal">Please <a href="{% url 'accounts:sign_in' %}">sign in</a> to add a comment.</p>
         {% endif %}
     </div>
 </div>

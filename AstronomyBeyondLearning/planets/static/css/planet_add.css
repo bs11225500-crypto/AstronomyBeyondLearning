@@ -106,3 +106,163 @@ body {
     background: url("../images/background-space.jpg") no-repeat center center fixed;
     background-size: cover;
 }
+
+.current-image-box {
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.current-image-box label {
+    font-size: 15px;
+    opacity: 0.9;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.current-planet-img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 0 12px rgba(255,255,255,0.1);
+}
+.delete-icon-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+
+    margin-top: 15px;
+
+    background: rgba(255, 60, 60, 0.15);
+    border: 1px solid rgba(255, 60, 60, 0.35);
+
+    color: #ff7373;
+    font-size: 22px;
+    text-decoration: none;
+
+    transition: .3s ease;
+}
+
+.delete-icon-btn:hover {
+    background: rgba(255, 60, 60, 0.25);
+    transform: translateY(-3px);
+}
+
+
+.form-group a,
+.form-group .clearable-file-input,
+.form-group label[for$="-clear"],
+.form-group input[type="checkbox"] {
+    display: none !important;
+}
+
+.form-group label[for*="image"] {
+    display: none !important; 
+}
+
+.current-image-box {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.current-planet-img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+.form-group input[type="file"] {
+    padding: 10px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+
+@media (max-width: 850px) {
+
+    .auth-card {
+        width: 92% !important;
+        padding: 25px !important;
+        margin-top: 130px !important;
+    }
+
+    h2 {
+        font-size: 24px !important;
+    }
+
+    .current-planet-img {
+        width: 180px !important;
+        height: 180px !important;
+        border-radius: 16px !important;
+    }
+
+    .current-image-label {
+        font-size: 15px !important;
+    }
+
+    .form-group label {
+        font-size: 14px !important;
+    }
+
+    input,
+    textarea,
+    select {
+        font-size: 14px !important;
+        padding: 8px !important;
+    }
+
+    .primary-btn {
+        padding: 12px !important;
+        font-size: 15px !important;
+    }
+
+    .delete-icon-btn {
+        margin-top: 20px;
+    }
+}
+
+
+
+@media (max-width: 430px) {
+
+    .auth-card {
+        width: 95% !important;
+        padding: 20px !important;
+    }
+
+    h2 {
+        font-size: 22px !important;
+    }
+
+    .current-planet-img {
+        width: 150px !important;
+        height: 150px !important;
+    }
+
+    .primary-btn {
+        font-size: 14px !important;
+        padding: 10px !important;
+    }
+
+    .form-group label {
+        font-size: 13px !important;
+    }
+
+    input,
+    textarea,
+    select {
+        font-size: 13px !important;
+        padding: 7px !important;
+    }
+}

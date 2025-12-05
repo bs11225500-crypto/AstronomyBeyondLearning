@@ -3,6 +3,8 @@ from django.contrib import messages
 from .models import Planet,BookmarkPlanet
 from .forms import PlanetForm
 from django.core.paginator import Paginator
+from .forms import PlanetEditForm
+
 
 def planets_add_view(request):
 
@@ -84,7 +86,7 @@ def planet_update_view(request, planet_id):
     planet = Planet.objects.get(id=planet_id)
 
     if request.method == "POST":
-        form = PlanetForm(request.POST, request.FILES, instance=planet)
+        form = PlanetEditForm(request.POST or None, request.FILES or None, instance=planet)
 
         if form.is_valid():
 

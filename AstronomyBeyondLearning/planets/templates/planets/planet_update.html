@@ -22,24 +22,33 @@
         {% csrf_token %}
 
         {% for field in form %}
-        <div class="form-group">
-            <label>{{ field.label }}</label>
-            {{ field }}
-        </div>
+            {% if field.name != "image" %}
+            <div class="form-group">
+                <label>{{ field.label }}</label>
+                {{ field }}
+            </div>
+            {% endif %}
         {% endfor %}
+
+        {% if planet.image %}
+        <div class="current-image-box">
+            <label class="current-image-label">Current Image:</label>
+            <img src="{{ planet.image.url }}" class="current-planet-img">
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label>Upload New Image</label>
+            <input type="file" name="image" accept="image/*" class="custom-file-input">
+        </div>
+
+
 
         {% if user.is_staff %}
             <button type="submit" class="primary-btn">Save Changes</button>
         {% endif %}
-
     </form>
 
-    
-    {% if user.is_staff %}
-        <a href="{% url 'planets:planet_delete_view' planet.id %}" class="delete-link">
-            Delete Planet
-        </a>
-    {% endif %}
 
 </div>
 

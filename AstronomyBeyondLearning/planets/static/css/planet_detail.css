@@ -1,5 +1,11 @@
 /*page 1 */
-
+body {
+    background-image: url('/static/images/bgspace3.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    color: white; 
+}
 .planet-hero-card {
     width: 90%;
     max-width: 1300px;
@@ -364,3 +370,124 @@
         margin: auto;
     }
 }
+
+
+/* responsive */
+
+@media (max-width: 1050px) {
+
+    .planet-hero-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        margin-top: 120px;
+    }
+
+    .planet-left {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .planet-desc {
+        max-width: 100%;
+        margin: 20px auto;
+    }
+
+    .btns-wrapper {
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .icon-btn {
+        margin-left: 6px;
+    }
+
+    .planet-right {
+        width: 100%;
+        height: auto;
+    }
+
+    .planet-circle-img {
+        position: relative;
+        right: 0;
+        width: 360px;
+        height: 360px;
+        margin: auto;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .planet-name {
+        font-size: 2.2rem;
+    }
+
+    .planet-category {
+        font-size: 1rem;
+    }
+
+    .planet-circle-img {
+        width: 260px;
+        height: 260px;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .facts-title {
+        margin-top: 120px;
+        font-size: 28px;
+    }
+
+    .facts-layout {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .facts-left,
+    .facts-right {
+        margin: 0 !important;
+        padding: 0 !important;
+        align-items: center;
+    }
+
+    .fact-item::before {
+        display: none !important;
+    }
+
+    .planet-rotate-img {
+        width: 260px !important;
+        height: 260px !important;
+        margin: 0 auto 20px auto !important;
+    }
+
+    .fact-item h4 {
+        font-size: 20px !important;
+    }
+
+    .fact-item p {
+        font-size: 16px !important;
+    }
+
+    .weight-box {
+        width: 90% !important;
+        margin-top: 30px !important;
+        padding: 25px !important;
+    }
+
+    .weight-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .weight-row input {
+        width: 100% !important;
+    }
+
+    .weight-row button {
+        width: 100% !important;
+    }
+}
+

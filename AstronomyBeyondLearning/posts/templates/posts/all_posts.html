@@ -16,28 +16,28 @@
 
   
     
-<div class="posts-feed-container">
-    <div class="feed-header mb-5">
-        <div class="page-description">
+<div class="posts-feed-container reveal">
+    <div class="feed-header mb-5 reveal" >
+        <div class="page-description reveal">
             <h1>Cosmic Chronicles</h1>
             <p>Explore the latest celestial discoveries shared by our community.</p>
         </div>
-          <form method="GET" action="{% url 'posts:post_search_view' %}" class="search-bar-container">
+          <form method="GET" action="{% url 'posts:post_search_view' %}" class="search-bar-container reveal">
         <input 
             type="text" 
             name="search" 
             placeholder="Search celestial discoveries..." 
             value="{{ query }}" 
-            class="search-input"
+            class="search-input reveal"
         >
-        <button type="submit" class="search-button">Search</button>
+        <button type="submit" class="search-button reveal">Search</button>
     </form>
     </div> 
-    <div class="post-grid">
+    <div class="post-grid reveal">
         {% for post in posts %}
             {% include 'posts/_post_card.html' with post=post %}
         {% empty %}
-            <div class="col-12">
+            <div class="col-12 reveal">
                 <p class="text-center p-5 text-muted no-posts-message">
                     The cosmic dust settled. No posts found yet!
                 </p>

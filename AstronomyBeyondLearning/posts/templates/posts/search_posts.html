@@ -8,9 +8,9 @@
 
 {% block content %}
 
-<div class="cosmic-chronic-container">
-    <h1 class="cosmic-title">Cosmic Chronicles</h1>
-    <p class="explore-text">Explore the latest celestial discoveries shared by our community.</p>
+<div class="cosmic-chronic-container reveal">
+    <h1 class="cosmic-title reveal">Cosmic Chronicles</h1>
+    <p class="explore-text reveal">Explore the latest celestial discoveries shared by our community.</p>
 
     <form method="GET" action="{% url 'posts:post_search_view' %}" class="search-bar-container">
         <input 
@@ -18,13 +18,13 @@
             name="search" 
             placeholder="Search celestial discoveries..." 
             value="{{ query }}" 
-            class="search-input"
+            class="search-input reveal"
         >
-        <button type="submit" class="search-button">Search</button>
+        <button type="submit" class="search-button reveal">Search</button>
     </form>
 
     {% if posts %}
-        <div class="cards-grid">
+        <div class="cards-grid reveal">
             {% for post in posts %}
                 <div class="post-card">
                     <h3>{{ post.title }}</h3>
