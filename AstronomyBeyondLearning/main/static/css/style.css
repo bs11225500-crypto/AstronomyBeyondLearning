@@ -1,3 +1,5 @@
+
+
 * {
     margin: 0;
     padding: 0;
@@ -25,8 +27,8 @@ main {
 
 /* base*/
 .glass-navbar {
-    position: fixed;
-    top: 22px;
+    position: fixed !important;
+    top: 22px !important;
     left: 50%;
     transform: translateX(-50%);
     
@@ -794,3 +796,278 @@ main {
     margin-left: auto;
     margin-right: auto;
 }
+.menu-toggle {
+    display: none !important;
+}
+
+
+/*  respocive navebar*/
+
+@media (max-width: 850px) {
+
+
+
+    .glass-center {
+        display: none !important;
+    }
+
+    .menu-toggle {
+        display: block !important;
+        font-size: 28px;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+
+    }
+    .menu-toggle:active {
+    transform: scale(0.8);
+    }
+
+    .glass-navbar {
+        gap: 15px;
+        justify-content: space-between !important;
+        padding: 14px 20px; 
+    }
+
+    .glass-center.show {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 90px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 85%;
+
+        background: rgba(0,0,0,0.88);
+        backdrop-filter: blur(12px);
+        padding: 25px 20px;
+        border-radius: 0 0 20px 20px;
+        gap: 20px;
+        z-index: 99999;
+        animation: menuSlide 0.35s ease forwards;
+    }
+
+    .glass-center.show a {
+        color: white !important;
+        font-size: 18px;
+        text-decoration: none;
+        position: relative;
+        transition: transform 0.15s ease, opacity 0.2s ease;
+    }
+    .glass-center.show a:active {
+    transform: scale(0.95);
+    opacity: 0.6;
+    }
+        .glass-right {
+        display: flex;
+        align-items: center;
+        gap: 8px; 
+    }
+
+
+
+.welcome-text {
+    font-size: 12px !important;
+    gap: 4px;
+}
+
+.welcome-text i {
+    font-size: 16px !important;
+}
+
+.glass-btn {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    gap: 4px;
+    margin-right: 0 ;
+    transition: 0.25s ease, box-shadow 0.3s ease;
+
+}
+
+.glass-btn i {
+    font-size: 18px !important;
+}
+.glass-btn:hover {
+    box-shadow: 0 0 12px rgba(255,255,255,0.35);
+}
+
+}
+
+@keyframes menuSlide {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+  
+/* respocive footer */
+
+@media (max-width: 850px) {
+
+    .footer-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .footer-col a {
+        font-size: 15px;
+    }
+}
+
+/* respocive home */
+@media (max-width: 850px) {
+
+    .hero {
+        height: 70vh;
+    }
+
+    .hero-content {
+        margin-top: 180px !important;
+    }
+
+    .abl-letters span {
+        font-size: 42px !important;
+        margin: 0 6px !important;
+    }
+
+    .abl-words span {
+        font-size: 16px !important;
+    }
+
+}
+/* respocive intro panel */
+@media (max-width: 850px) {
+    .planet-menu {
+        border-right: none !important;
+    }
+
+    .planet-menu {
+        border-bottom: 1px solid rgba(255,255,255,0.12) !important;
+    }
+
+    .planet-panel {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 20px !important;
+        padding: 10px 0 !important;
+        overflow: hidden !important;
+        max-width: 100% !important;
+    }
+    .planet-panel h1 {
+        font-size: 2rem !important;   
+        line-height: 1.2 !important;
+        text-align: center !important;
+        margin-top: 20px !important;
+    }
+
+    .planet-panel h3 {
+        font-size: 0.9rem !important;
+        text-align: center !important;
+        margin-bottom: 10px !important;
+    }
+        .planet-panel p {
+        font-size: 16px !important;
+        line-height: 1.5 !important;
+        text-align: center !important;
+        padding: 0 10px !important;
+    }
+    .planet-image img {
+        width: 150px !important;
+        height: 150px !important;
+        margin-bottom: 10px;
+    }
+
+    .planet-info h1 {
+        font-size: 1.7rem !important;
+        margin-bottom: 5px;
+    }
+
+    .planet-info h3 {
+        font-size: 0.75rem !important;
+        opacity: 0.6 !important;
+    }
+
+    .planet-ayah {
+        font-size: 16px !important;
+        width: 100% !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        border-right: none !important;
+        animation: none !important;
+        text-align: center !important;
+    }
+
+    .planet-display {
+        width: 100% !important;
+        padding: 10px !important;
+    }
+        .planet-btn.active {
+        background: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+
+    .planet-btn.active span,
+    .planet-btn.active {
+        position: relative;
+        color: white !important;
+    }
+
+    .planet-btn.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 2px;
+        background: rgba(255,255,255,0.7);
+        border-radius: 10px;
+        box-shadow: 0 0 6px rgba(255,255,255,0.6);
+    }
+
+}
+
+
+
+
+@media (max-width: 850px) {
+    .featured-title {
+        font-size: 28px !important;
+    }
+
+    .featured-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .featured-card {
+        height: 200px !important;
+    }
+}
+@media (max-width: 850px) {
+
+    .contact-fullscreen {
+        height: auto !important;
+        padding: 40px 0;
+    }
+
+    .contact-card {
+        width: 90% !important;
+        margin: 60px auto !important;
+        padding: 25px !important;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 10px !important;
+    }
+
+}
+
+

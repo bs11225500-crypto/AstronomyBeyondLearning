@@ -21,10 +21,15 @@
 
 <body>
     <nav class="glass-navbar">
+        <span class="menu-toggle material-icons" onclick="toggleMenu()">
+            menu
+        </span>
+
 
         <a href="{% url 'main:home' %}" class="glass-logo">ABL</a>
 
-        <div class="glass-center">
+
+        <div class="glass-center mobile-hidden" >
             <a href="{% url 'main:about_view' %}"
             class="{% if 'about' in request.path %}active-link{% endif %}">
                 About
@@ -63,7 +68,9 @@
                 <a href="{% url 'accounts:user_profile_view' user.username %}" 
                 class="welcome-text {% if user.username in request.path %}welcome-active{% endif %}">
                     <i class="material-icons">person</i>
+                    <span class="welcome-mobile">
                     Welcome, {{ user.first_name|default:user.username }}
+                    </span>
                 </a>
 
 
@@ -125,8 +132,14 @@
 
 
     {% block extra_js %}
+
     {% endblock extra_js %}
 
+    <script>
+    function toggleMenu() {
+        document.querySelector(".glass-center").classList.toggle("show");
+    }
+    </script>
 
 
 </body>
