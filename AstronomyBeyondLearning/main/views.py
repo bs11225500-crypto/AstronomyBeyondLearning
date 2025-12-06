@@ -86,3 +86,8 @@ def contact_messages_view(request):
         "count": all_msgs.count(),
         "paginator": paginator,
     })
+
+def error_404_view(request, exception):
+    return render(request, "404.html", status=404)
+
+

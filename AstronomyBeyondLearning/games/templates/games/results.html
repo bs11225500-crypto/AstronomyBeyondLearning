@@ -1,0 +1,63 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/results.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+<div class="results-hero">
+
+    <video autoplay muted loop playsinline class="results-video">
+        <source src="{% static 'videos/hero_games.mp4' %}" type="video/mp4">
+    </video>
+
+    <div class="results-overlay"></div>
+
+    <div class="results-content">
+
+        <div class="results-card">
+
+            <h1 class="title">Your Results </h1>
+
+            <p class="score-line">
+                You scored <span class="score">{{ score }}</span> / {{ total }}
+            </p>
+
+            {% if is_logged_in %}
+                <p class="info">Best Score: {{ user_progress.best_score }}</p>
+                <p class="info">Total Attempts: {{ user_progress.attempts }}</p>
+            {% else %}
+                <p class="info">
+                    Want your score to appear on the leaderboard?
+                    <a class="signup" href="{% url 'accounts:sign_up' %}">Sign Up</a>
+                </p>
+            {% endif %}
+
+            <h2 class="lb-title">Top 5 Players</h2>
+
+            <div class="lb-list">
+                {% for p in leaderboard %}
+                    <div class="lb-row">
+                        <span>{{ forloop.counter }}. {{ p.user.username }}</span>
+                        <span>{{ p.best_score }}</span>
+                    </div>
+                {% empty %}
+                    <p class="no-data">No players yet.</p>
+                {% endfor %}
+            </div>
+            <div class="btn-group">
+                <a href="{% url 'games:leaderboard' %}" class="primary-btn">View Leaderboard</a>
+                <a href="{% url 'games:game' %}" class="primary-btn">Back to Game</a>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}

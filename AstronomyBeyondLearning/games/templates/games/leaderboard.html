@@ -1,0 +1,56 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/leaderboard.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+<div class="lb-hero">
+
+    <video autoplay muted loop playsinline class="lb-video">
+        <source src="{% static 'videos/hero_games.mp4' %}" type="video/mp4">
+    </video>
+
+    <div class="lb-overlay"></div>
+
+    <div class="lb-content">
+
+        <div class="lb-card">
+
+            <h1 class="lb-title">Leaderboard </h1>
+
+            <p class="lb-subtitle">
+                Total Registered Players Who Played: 
+                <span class="lb-count">{{ total_players }}</span>
+            </p>
+
+            <div class="lb-header">
+                <span>Player</span>
+                <span>Best Score</span>
+            </div>
+
+            <div class="lb-list">
+                {% for p in players %}
+                    <div class="lb-row">
+                        <span>{{ p.user.username }}</span>
+                        <span>{{ p.best_score }}</span>
+                    </div>
+
+                {% empty %}
+                    <p class="empty">No players yet.</p>
+                {% endfor %}
+            </div>
+
+            <div class="lb-buttons">
+                <a href="{% url 'games:game' %}" class="primary-btn">Back to Game</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

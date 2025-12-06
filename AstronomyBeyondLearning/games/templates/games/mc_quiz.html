@@ -20,13 +20,16 @@
 
     {% elif game_over %}
         <div class="quiz-card">
-            <h2 class="quiz-title">Game Over 🚀</h2>
+            <h2 class="quiz-title">Game Over </h2>
             
             <p class="final-score">Your Score: {{ score }} / {{ total }}</p>
 
-            <a href="{% url 'games:multiple_choice' %}?reset_quiz=1&go_back=1" class="primary-btn">
-                Done
-            </a>
+            <div class="gameover-buttons">
+                <a href="{% url 'games:multiple_choice' %}?reset_quiz=1&go_back=1" class="primary-btn">Done</a>
+                <a href="{% url 'games:results' %}" class="primary-btn">View Full Results</a>
+            </div>
+
+
 
             
         </div>

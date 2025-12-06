@@ -13,6 +13,13 @@ from django.core.paginator import Paginator
 
 
 
+
+
+
+# Create your views here.
+
+
+
 def sign_in(request: HttpRequest):
 
     next_url = request.GET.get("next", "/")  
@@ -117,7 +124,7 @@ def user_profile_view(request: HttpRequest, user_name):
 
     except Exception as e:
         print("Profile error:", e)
-        return render(request, "404.html", status=404)
+        return redirect("main:home")
 
     recent_posts = (
         Post.objects.filter(author=profile_user)
@@ -167,6 +174,7 @@ def user_profile_view(request: HttpRequest, user_name):
         "bookmarked_posts": bookmarked_posts,
         "commented_posts": commented_posts,
         "show_private_sections": show_private_sections,
+        "progress": progress, 
     })
 
 

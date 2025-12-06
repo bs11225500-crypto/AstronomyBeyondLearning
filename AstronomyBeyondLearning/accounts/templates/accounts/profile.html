@@ -41,6 +41,29 @@
             </a>
         </div>
         {% endif %}
+        {% if progress %}
+        <div class="quiz-stats-card">
+
+            <h3 class="quiz-title">Quiz Performance</h3>
+
+            <div class="quiz-row">
+                <span class="quiz-label"> Best Score:</span>
+                <span class="quiz-value">{{ progress.best_score }} / 5</span>
+            </div>
+
+            <div class="quiz-row">
+                <span class="quiz-label"> Last Score:</span>
+                <span class="quiz-value">{{ progress.last_score }} / 5</span>
+            </div>
+
+            <div class="quiz-row">
+                <span class="quiz-label"> Attempts:</span>
+                <span class="quiz-value">{{ progress.attempts }}</span>
+            </div>
+
+        </div>
+        {% endif %}
+
 
     </div>
 
