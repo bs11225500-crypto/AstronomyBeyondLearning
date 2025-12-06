@@ -206,3 +206,9 @@ classDiagram
         +accepted_terms
     }
 ```
+
+
+## Wireframes
+
+### Pages Overview
+![Wireframes](wireframes/wireframe.jpg)
