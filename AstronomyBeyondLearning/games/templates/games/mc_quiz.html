@@ -89,18 +89,15 @@
 
             {% else %}
 
-                <!-- TIMER -->
                 <div class="timer-box">
                     Time Left: <span id="timer">10</span> sec
                 </div>
 
-                <!-- AUTO SUBMIT FORM WHEN TIME ENDS -->
                 <form id="autoNextForm" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="answer" value="NONE">
                 </form>
 
-                <!-- MAIN OPTIONS FORM -->
                 <form method="POST" class="options-form">
                     {% csrf_token %}
                     {% for letter, text in question.options.items %}
@@ -128,10 +125,9 @@
 
 {% if feedback %}
 <script>
-    let correctSound = new Audio("/static/sounds/correct.mp3");
+    let correctSound = new Audio("/static/sounds/correct.wav");
     let wrongSound = new Audio("/static/sounds/wrong.wav");
 
-    // نرسل المتغيرات من Django إلى JS
     let selected = "{{ selected }}";
     let correct = "{{ correct }}";
 
