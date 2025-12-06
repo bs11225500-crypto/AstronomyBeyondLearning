@@ -1,6 +1,4 @@
-/* ===============================
-   BACKGROUND VIDEO + OVERLAY
-================================*/
+
 
 .lb-hero {
     position: relative;
@@ -21,9 +19,7 @@
     background: rgba(0,0,0,0.55);
 }
 
-/* ===============================
-   MAIN CONTENT
-================================*/
+
 
 .lb-content {
     position: absolute;

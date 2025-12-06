@@ -24,19 +24,16 @@ def game(request):
 
 def multiple_choice_game(request):
 
-    # إعادة تشغيل الكويز بالكامل
     if request.GET.get("reset_quiz"):
         request.session.pop("questions", None)
         request.session.pop("score", None)
         request.session.pop("q_index", None)
 
-        # الرجوع لصفحة الألعاب لو طلب المستخدم
         if request.GET.get("go_back"):
             return redirect("games:game")
 
     TOTAL = 5
 
-    # لو أول مرة يدخل الكويز، نحمل الأسئلة ونخلطها
     if "questions" not in request.session:
         all_q = load_questions()
         random.shuffle(all_q)
@@ -48,7 +45,6 @@ def multiple_choice_game(request):
     q_index = request.session["q_index"]
     score = request.session["score"]
 
-    # التالي → الانتقال للسؤال التالي
     if request.GET.get("next"):
         request.session["q_index"] = q_index + 1
         return redirect("games:multiple_choice")
@@ -56,7 +52,6 @@ def multiple_choice_game(request):
 
     if q_index >= TOTAL:
 
-        # إذا المستخدم مسجل → نحفظ نتيجته
         if request.user.is_authenticated:
             progress, created = QuizProgress.objects.get_or_create(user=request.user)
             progress.last_score = score
@@ -65,10 +60,8 @@ def multiple_choice_game(request):
                 progress.best_score = score
             progress.save()
 
-        # نخزن النتيجة في session حتى تظهر في صفحة النتائج
         request.session["last_game_score"] = score
 
-        # تحويل لصفحة النتائج
         return render(request, "games/mc_quiz.html", {
             "game_over": True,
             "score": score,
@@ -82,7 +75,6 @@ def multiple_choice_game(request):
         selected = request.POST.get("answer")
         correct = current["correct"]
 
-        # إذا الوقت انتهى وما جاوب المستخدم
         if selected == "NONE":
             return render(request, "games/mc_quiz.html", {
                 "question": current,
@@ -97,7 +89,6 @@ def multiple_choice_game(request):
                 "time_out": True
             })
 
-        # إذا المستخدم جاوب فعلاً
         if selected == correct:
             request.session["score"] = score + 1
 
@@ -122,13 +113,11 @@ def multiple_choice_game(request):
 
 
 def results(request):
-    score = request.session.get("last_game_score")  # نتيجة آخر لعبة
+    score = request.session.get("last_game_score") 
     total = 5
 
-    # Top 5 players
     leaderboard = QuizProgress.objects.order_by('-best_score')[:5]
 
-    # نتائج المستخدم المسجل
     user_progress = None
     if request.user.is_authenticated:
         user_progress = QuizProgress.objects.filter(user=request.user).first()
